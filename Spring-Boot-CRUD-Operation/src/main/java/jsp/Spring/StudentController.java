@@ -15,18 +15,23 @@ public class StudentController {
 	@Autowired
 	private StudentRepository sr;
 	
+	// Save the Student
 	@PostMapping("/student")
 	public String saveStudent(@RequestBody Student s) {
 		sr.save(s);
 		return "Student Record Saved";
 	}
 	
+	
+	// Get OR Fetch All the Student data
 	@GetMapping("/student")
 	public List<Student> getAllStudent(){
 		List<Student> s = sr.findAll();
 		return s;
 	}
 	
+	
+	// Get OR Fetch the student data by id
 	@GetMapping("/student/{id}")
 	public Student getStudentById(@PathVariable int id) {
 		Optional<Student> opt = sr.findById(id);
@@ -38,12 +43,16 @@ public class StudentController {
 		}
 	}
 	
+	
+	// Update the student data
 	@PutMapping("/student")
 	public String updateStudent(@RequestBody Student s) {
 		sr.save(s);
 		return "Student Record is Updated";
 	}
 	
+	
+	// Delete the student data
 	@DeleteMapping("/student/{id}")
 	public String deletStudentById(@PathVariable int id) {
 		Optional<Student> opt = sr.findById(id);
