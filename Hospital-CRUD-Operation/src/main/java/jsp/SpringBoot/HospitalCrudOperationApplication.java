@@ -1,3 +1,6 @@
+// RESPONSE ENTITY OPERATIONS
+
+
 package jsp.SpringBoot;
 
 import org.springframework.boot.SpringApplication;
@@ -11,3 +14,4 @@ public class HospitalCrudOperationApplication {
 	}
 
 }
+

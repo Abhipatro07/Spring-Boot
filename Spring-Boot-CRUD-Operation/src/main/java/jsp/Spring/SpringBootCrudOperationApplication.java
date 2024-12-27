@@ -1,3 +1,5 @@
+// RESOPNSE STRUCTURE
+
 package jsp.Spring;
 
 import org.springframework.boot.SpringApplication;
