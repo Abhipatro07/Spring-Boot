@@ -18,5 +18,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return new ResponseEntity<ResponseStructure<String>>(str,HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(NameNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> handleNameNotFoundException(NameNotFoundException e){
+		ResponseStructure<String> str = new ResponseStructure<String>();
+		str.setStatusCode(HttpStatus.NOT_FOUND.value());
+		str.setMeassage("Not ound");
+		str.setData(e.getMessage());
+		
+		return new ResponseEntity<ResponseStructure<String>>(str,HttpStatus.NOT_FOUND);
+	}
 
 }

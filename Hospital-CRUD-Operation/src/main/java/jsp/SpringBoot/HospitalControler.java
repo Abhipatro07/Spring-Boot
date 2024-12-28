@@ -89,7 +89,40 @@ public class HospitalControler {
 		else {
 			throw new IdNotFoundException();
 		}
-		
 	}
-
+	
+	@GetMapping("/hospitals/{hname}")
+	public ResponseEntity<ResponseStructure<List<Hospital>>> getHospitalName(@PathVariable String hname){
+		ResponseStructure<List<Hospital>> str = new ResponseStructure<List<Hospital>>();
+		List<Hospital> h = hr.findByHname(hname);
+		
+		if(!h.isEmpty()) {
+			str.setStatusCode(HttpStatus.OK.value());
+			str.setMeassage("Success");
+			str.setData(h);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.OK);
+		}
+		else {
+			throw new NameNotFoundException();
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
