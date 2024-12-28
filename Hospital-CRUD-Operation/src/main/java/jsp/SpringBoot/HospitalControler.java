@@ -58,10 +58,7 @@ public class HospitalControler {
 			return new ResponseEntity<ResponseStructure<Hospital>>(str , HttpStatus.OK);
 		}
 		else {
-			str.setStatusCode(HttpStatus.NOT_FOUND.value());
-			str.setMeassage("Id Not Found");
-			str.setData(null);
-			return new ResponseEntity<ResponseStructure<Hospital>>(str , HttpStatus.NOT_FOUND);
+			throw new IdNotFoundException();
 		}
 	}
 	
@@ -90,10 +87,7 @@ public class HospitalControler {
 			return new ResponseEntity<ResponseStructure<Hospital>>(str , HttpStatus.OK);
 		}
 		else {
-			str.setStatusCode(HttpStatus.NOT_FOUND.value());
-			str.setMeassage("Id Not Found");
-			str.setData(null);
-			return new ResponseEntity<ResponseStructure<Hospital>>(str , HttpStatus.NOT_FOUND);
+			throw new IdNotFoundException();
 		}
 		
 	}
