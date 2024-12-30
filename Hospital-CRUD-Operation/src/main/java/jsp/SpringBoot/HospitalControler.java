@@ -106,6 +106,63 @@ public class HospitalControler {
 			throw new NameNotFoundException();
 		}
 	}
+	
+	@GetMapping("/hospitals")
+	public ResponseEntity<ResponseStructure<List<Hospital>>> getHospitalsName(){
+		ResponseStructure<List<Hospital>> str = new ResponseStructure<List<Hospital>>();
+		List<Hospital> h =hr.getHospitalName();
+		
+		if(!h.isEmpty()) {
+			str.setStatusCode(HttpStatus.OK.value());
+			str.setMeassage("Success");
+			str.setData(h);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.OK);
+		}
+		else {
+			str.setStatusCode(HttpStatus.NOT_FOUND.value());
+			str.setMeassage("Success");
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("/hospitals/{location}/{hname}")
+	public ResponseEntity<ResponseStructure<List<Hospital>>> getTheHospitalName(@PathVariable String location , @PathVariable String hname){
+		ResponseStructure<List<Hospital>> str = new ResponseStructure<List<Hospital>>();
+		List<Hospital> h = hr.getHospitalNameByLocation(location, hname);
+		
+		if(!h.isEmpty()) {
+			str.setStatusCode(HttpStatus.OK.value());
+			str.setMeassage("Success");
+			str.setData(h);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.OK);
+		}
+		else {
+			str.setStatusCode(HttpStatus.NOT_FOUND.value());
+			str.setMeassage("Failure");
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("/Hospitals/{hname}")
+	public ResponseEntity<ResponseStructure<List<Hospital>>> getHopitalName(@PathVariable String hname){
+		ResponseStructure<List<Hospital>> str = new ResponseStructure<List<Hospital>>();
+		List<Hospital> h = hr.getHospitalByName(hname);
+		
+		if(!h.isEmpty()) {
+			str.setStatusCode(HttpStatus.OK.value());
+			str.setMeassage("Success");
+			str.setData(h);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.OK);
+		}
+		else {
+			str.setStatusCode(HttpStatus.NOT_FOUND.value());
+			str.setMeassage("Failure");
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<List<Hospital>>>(str,HttpStatus.NOT_FOUND);
+		}
+	}
 }
 
 
