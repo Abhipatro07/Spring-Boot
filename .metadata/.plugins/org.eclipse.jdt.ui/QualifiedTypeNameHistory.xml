@@ -4,11 +4,8 @@
     <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
     <fullyQualifiedTypeName name="jsp.SpringBoot.EmployeeRepository"/>
     <fullyQualifiedTypeName name="jsp.Spring.ResponseStructure"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="jsp.SpringBoot.HospitalRepository"/>
@@ -35,4 +32,9 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="jsp.SpringBoot.ResponseStructure"/>
     <fullyQualifiedTypeName name="jsp.SpringBoot.Hospital"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
 </qualifiedTypeNameHistroy>
