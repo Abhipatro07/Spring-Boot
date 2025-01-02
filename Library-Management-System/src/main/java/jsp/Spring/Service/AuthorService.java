@@ -43,7 +43,6 @@ public class AuthorService {
 	
 	public ResponseEntity<ResponseStructure<Author>> getAuthorById(int id){
 		Optional<Author> getAuthorById = authorDao.getAuthorById(id);
-		
 		ResponseStructure<Author> str = new ResponseStructure<Author>();
 		if(getAuthorById.isPresent()) {
 			str.setStatusCode(HttpStatus.FOUND.value());
@@ -52,9 +51,51 @@ public class AuthorService {
 			return new ResponseEntity<ResponseStructure<Author>>(str , HttpStatus.FOUND);
 		}
 		else {
-			return null;
+			str.setStatusCode(HttpStatus.NOT_FOUND.value());
+			str.setMessage("Failed");
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<Author>>(str , HttpStatus.NOT_FOUND);
 		}
-		
+	}
+	
+	public ResponseEntity<ResponseStructure<Author>> deleteAuthor(int id){
+		Optional<Author> deleteAuthor = authorDao.getAuthorById(id);
+		ResponseStructure<Author> str = new ResponseStructure<Author>();
+		if(deleteAuthor.isPresent()) {
+			authorDao.deleteAuthor(id);
+			str.setStatusCode(HttpStatus.OK.value());
+			str.setMessage("Deleted");		
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<Author>>(str , HttpStatus.FOUND);
+		}
+		else {
+			str.setStatusCode(HttpStatus.NOT_FOUND.value());
+			str.setMessage("Failed");
+			str.setData(null);
+			return new ResponseEntity<ResponseStructure<Author>>(str , HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	public ResponseEntity<ResponseStructure<Author>> updateAuthor(Author author){
+		Author updatedAuthor = authorDao.saveAuthor(author);
+		ResponseStructure<Author> str = new ResponseStructure<Author>();
+		str.setStatusCode(HttpStatus.OK.value());
+		str.setMessage("Updated");		
+		str.setData(updatedAuthor);
+		return new ResponseEntity<ResponseStructure<Author>>(str , HttpStatus.OK);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

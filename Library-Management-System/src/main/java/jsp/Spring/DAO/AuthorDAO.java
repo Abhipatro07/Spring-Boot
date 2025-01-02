@@ -33,5 +33,33 @@ public class AuthorDAO {
 			return null;
 		}
 	}
+	
+	public Optional<Author> deleteAuthor(int id) {
+		Optional<Author> author = authorRepository.findById(id);
+		if(author.isPresent()) {
+			Author deletedAuthor = author.get();
+			authorRepository.delete(deletedAuthor);
+			return null;
+		}
+		else {
+			return null;
+		}
+	} 
+	
+	public Author updateAuthor(Author author) {
+		return authorRepository.save(author);
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
