@@ -2,6 +2,9 @@ package jsp.Spring.Entity;
 
 import jakarta.persistence.Entity;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,12 +13,12 @@ public class Member {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String phone;
     private String email;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Loan> loans;
 
 	public Long getId() {

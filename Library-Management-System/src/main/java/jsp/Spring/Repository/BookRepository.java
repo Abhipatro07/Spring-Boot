@@ -1,7 +1,8 @@
 package jsp.Spring.Repository;
 
-import java.awt.print.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import jsp.Spring.Entity.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer>{
 

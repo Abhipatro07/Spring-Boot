@@ -2,6 +2,9 @@ package jsp.Spring.Entity;
 
 import jakarta.persistence.Entity;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +21,7 @@ public class Book {
     private Author author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Loan> loans;
 
 	public Long getId() {
