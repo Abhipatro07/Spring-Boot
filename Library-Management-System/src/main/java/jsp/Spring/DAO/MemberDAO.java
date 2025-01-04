@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import jsp.Spring.Entity.Member;
+import jsp.Spring.Exception.IdNotFoundException;
 import jsp.Spring.Repository.MemberRepository;
 
 @Repository
@@ -28,7 +29,7 @@ public class MemberDAO {
 			return member;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	
@@ -40,7 +41,7 @@ public class MemberDAO {
 			return null;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jsp.Spring.Entity.Author;
+import jsp.Spring.Exception.IdNotFoundException;
 import jsp.Spring.Repository.AuthorRepository;
 
 @Repository
@@ -30,7 +31,7 @@ public class AuthorDAO {
 			return author;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	
@@ -42,7 +43,7 @@ public class AuthorDAO {
 			return null;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	} 
 	

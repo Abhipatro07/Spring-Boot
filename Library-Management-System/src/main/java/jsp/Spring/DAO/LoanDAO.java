@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import jsp.Spring.DTO.ResponseStructure;
 import jsp.Spring.Entity.Loan;
+import jsp.Spring.Exception.IdNotFoundException;
 import jsp.Spring.Repository.LoanRepository;
 
 @Repository
@@ -31,7 +32,7 @@ public class LoanDAO {
 			return loan;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	
@@ -43,7 +44,7 @@ public class LoanDAO {
 			return null;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	

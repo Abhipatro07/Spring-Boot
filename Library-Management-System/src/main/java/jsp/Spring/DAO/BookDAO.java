@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import jsp.Spring.DTO.ResponseStructure;
 import jsp.Spring.Entity.Book;
+import jsp.Spring.Exception.IdNotFoundException;
 import jsp.Spring.Repository.BookRepository;
 
 @Repository
@@ -32,7 +33,7 @@ public class BookDAO {
 			return book;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	
@@ -44,7 +45,7 @@ public class BookDAO {
 			return null;
 		}
 		else {
-			return null;
+			throw new IdNotFoundException();
 		}
 	}
 	
