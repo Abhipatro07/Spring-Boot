@@ -9,7 +9,7 @@ public class Loan {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private LocalDate loanDate;
     private LocalDate returnDate;
@@ -22,11 +22,11 @@ public class Loan {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -8,17 +8,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import jsp.Spring.DAO.AuthorDAO;
 import jsp.Spring.DAO.BookDAO;
 import jsp.Spring.DTO.ResponseStructure;
+import jsp.Spring.Entity.Author;
 import jsp.Spring.Entity.Book;
 
 @Service
 public class BookService {
 	@Autowired
 	private BookDAO bookDao;
+	@Autowired
+	private AuthorDAO authorDao;
 	
 	public ResponseEntity<ResponseStructure<Book>> saveBook(Book book){
 		Book receivedBook = bookDao.saveBook(book);
+		
+		int aid = receivedBook.getAuthor().getId();
+		Optional<Author> author = authorDao.getAuthorById(aid);
+		if(author.isPresent()) {
+			receivedBook.setAuthor(author.get());
+		}
 		ResponseStructure<Book> str = new ResponseStructure<Book>();
 		str.setStatusCode(HttpStatus.CREATED.value());
 		str.setMessage("Ceated");

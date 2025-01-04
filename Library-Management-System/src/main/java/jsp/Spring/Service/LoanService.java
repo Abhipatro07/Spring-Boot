@@ -8,19 +8,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import jsp.Spring.DAO.AuthorDAO;
+import jsp.Spring.DAO.BookDAO;
 import jsp.Spring.DAO.LoanDAO;
+import jsp.Spring.DAO.MemberDAO;
 import jsp.Spring.DTO.ResponseStructure;
+import jsp.Spring.Entity.Author;
+import jsp.Spring.Entity.Book;
 import jsp.Spring.Entity.Loan;
+import jsp.Spring.Entity.Member;
 import jsp.Spring.Exception.IdNotFoundException;
 
 @Service
 public class LoanService {
 	@Autowired
 	private LoanDAO loanDao;
+	@Autowired
+	private BookDAO bookDao;
+	@Autowired
+	private MemberDAO memberDao;
 	
 	
 	public ResponseEntity<ResponseStructure<Loan>> saveLoan(Loan loan){
 		Loan receivedLoan = loanDao.saveLoan(loan);
+		
+		int bid = receivedLoan.getBook().getId();
+		Optional<Book> book = bookDao.getBookById(bid);
+		if(book.isPresent()) {
+			receivedLoan.setBook(book.get());
+		}
+		int mid = receivedLoan.getMember().getId();
+		Optional<Member> member = memberDao.getMemberById(mid);
+		if(member.isPresent()) {
+			receivedLoan.setMember(member.get());
+		}
 		ResponseStructure<Loan> str = new ResponseStructure<Loan>();
 		str.setStatusCode(HttpStatus.CREATED.value());
 		str.setMessage("Created");
